@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Grid from '@material-ui/core/Grid';
+
 
 import './LandingPage.css';
 
@@ -17,7 +19,7 @@ class LandingPage extends Component {
   };
 
   render() {
-    console.log(this.props.reduxState);
+    console.log("we in this thang",this.props.store.getMenu);
 
     return (
       
@@ -26,10 +28,22 @@ class LandingPage extends Component {
 
         <div className="grid">
           <div className="grid-col grid-col_8">
-        {/* {this.props.reduxState.getMenu.elements.map((menu) => {
-          return (this.props.menu)
-        })} */}
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
+                
+
+        {this.props.store.getMenu.map((menu) => {
+          return (
+            <>
+            <div>{menu.name}</div>
+            <div>{menu.price}</div>
+            </>
+            )
+        })}
+              </Grid>
+            </Grid>
           </div>
+          
           <div className="grid-col grid-col_4">
             <RegisterForm />
 
